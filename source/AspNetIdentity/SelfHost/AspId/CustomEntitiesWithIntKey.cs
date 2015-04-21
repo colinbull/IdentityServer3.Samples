@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
@@ -43,6 +44,21 @@ namespace SelfHost.AspId
         public CustomUserStore(CustomContext ctx)
             : base(ctx)
         {
+            ctx.Database.Log = Console.WriteLine;
+        }
+
+        public override Task CreateAsync(CustomUser user)
+        {
+            Console.WriteLine("Wrting user");
+            return base.CreateAsync(user);
+        }
+
+        
+
+        public override Task AddLoginAsync(CustomUser user, UserLoginInfo login)
+        {
+            Console.WriteLine("Wrting user");
+            return base.AddLoginAsync(user, login);
         }
     }
 
@@ -51,6 +67,16 @@ namespace SelfHost.AspId
         public CustomUserManager(CustomUserStore store)
             : base(store)
         {
+        }
+
+        public override Task<IdentityResult> CreateAsync(CustomUser user)
+        {
+            return base.CreateAsync(user);
+        }
+
+        public override Task<IdentityResult> CreateAsync(CustomUser user, string password)
+        {
+            return base.CreateAsync(user, password);
         }
     }
     

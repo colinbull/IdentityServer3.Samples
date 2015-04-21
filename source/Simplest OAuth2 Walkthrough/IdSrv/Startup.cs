@@ -16,7 +16,8 @@ namespace IdSrv
 
             var options = new IdentityServerOptions
             {
-                Factory = factory
+                Factory = factory,
+                RequireSsl = false
             };
 
             app.UseIdentityServer(options);

@@ -14,8 +14,8 @@ namespace Apis
             // accept access tokens from identityserver and require a scope of 'api1'
             app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
                 {
-                    Authority = "https://localhost:44333",
-                    RequiredScopes = new[] { "api1" }
+                    Authority = "http://localhost:44333",
+                    RequiredScopes = new[] { "api1" },
                 });
 
             // configure web api
@@ -23,7 +23,7 @@ namespace Apis
             config.MapHttpAttributeRoutes();
             
             // require authentication for all controllers
-            config.Filters.Add(new AuthorizeAttribute());
+            //config.Filters.Add(new AuthorizeAttribute());
 
             app.UseWebApi(config);
         }

@@ -6,6 +6,7 @@ namespace Apis
     [Route("test")]
     public class TestController : ApiController
     {
+        [Authorize(Roles = "Geek")]
         public IHttpActionResult Get()
         {
             var caller = User as ClaimsPrincipal;

@@ -13,13 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
+
+using System.Threading.Tasks;
 using SelfHost.AspId;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using IdentityManager;
 using IdentityManager.AspNetIdentity;
 using IdentityManager.Configuration;
@@ -44,6 +40,11 @@ namespace SelfHost.IdMgr
         public SimpleIdentityManagerService(UserManager userMgr, RoleManager roleMgr)
             : base(userMgr, roleMgr)
         {
+        }
+
+        public override Task<IdentityManagerResult<QueryResult<UserSummary>>> QueryUsersAsync(string filter, int start, int count)
+        {
+            return base.QueryUsersAsync(filter, start, count);
         }
     }
 }

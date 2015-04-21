@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Security.Claims;
+using Thinktecture.IdentityServer.Core;
+using Thinktecture.IdentityServer.Core.Models;
 using Thinktecture.IdentityServer.Core.Services.InMemory;
 
 namespace IdSrv
@@ -17,9 +21,16 @@ namespace IdSrv
                 },
                 new InMemoryUser
                 {
-                    Username = "alice",
+                    Username = Environment.UserName,
                     Password = "secret",
-                    Subject = "2"
+                    Subject = "2",
+                    Claims = new[]
+                    {
+                        new Claim(Constants.ClaimTypes.GivenName, "Bob"),
+                        new Claim(Constants.ClaimTypes.FamilyName, "Smith"),
+                        new Claim(Constants.ClaimTypes.Role, "Geek"),
+                        new Claim(Constants.ClaimTypes.Role, "Foo")
+                    }
                 }
             };
         }

@@ -10,7 +10,7 @@ namespace IdSrv
         {
             LogProvider.SetCurrentLogProvider(new DiagnosticsTraceLogProvider());
 
-            using (WebApp.Start<Startup>("https://localhost:44333"))
+            using (WebApp.Start<Startup>("http://localhost:44333"))
             {
                 Console.WriteLine("server running...");
                 Console.ReadLine();

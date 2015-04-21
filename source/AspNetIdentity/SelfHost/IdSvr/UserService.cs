@@ -43,5 +43,6 @@ namespace SelfHost.IdSvr
             : base(userMgr)
         {
         }
+
     }
 }
